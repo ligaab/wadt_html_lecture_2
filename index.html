@@ -62,9 +62,19 @@
     body.dark-mode #backToTop {
       background-color: #444;
     }
+     /* Progress bar */
+    .progress-bar {
+      background-color: #6b2a2a;
+      transition: width 0.2s ease;
+      }
   </style>
 </head>
 <body>
+
+  <!-- Progress bar -->
+<div class="progress fixed-top" style="height: 5px; z-index: 1050;">
+  <div id="sceneProgress" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
 
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
@@ -517,6 +527,21 @@
     darkModeToggle.addEventListener('click', () => {
       document.body.classList.toggle('dark-mode');
     });
+
+     // Progress bar
+  const lines = document.querySelectorAll('#accordionScene1 .accordion-body');
+  const progressBar = document.getElementById('sceneProgress');
+  let seenLines = new Set();
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) seenLines.add(entry.target);
+    });
+    const percent = Math.round((seenLines.size / lines.length) * 100);
+    progressBar.style.width = percent + '%';
+    progressBar.setAttribute('aria-valuenow', percent);
+  }, { root: null, threshold: 0.1 });
+  lines.forEach(line => observer.observe(line));
+
   </script>
 
 </body>
