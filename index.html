@@ -41,6 +41,27 @@
       .dialog{display:block}
       .search{width:140px}
     }
+    /* back-to-top button */
+    #backToTop {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 12px 16px;
+      font-size: 14px;
+      border: none;
+      border-radius: 8px;
+      background-color: var(--accent);
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      display: none;
+      z-index: 1000;
+      transition: opacity 0.3s;
+    }
+    #backToTop:hover {
+      opacity: 0.8;
+    }
+
   </style>
 </head>
 <body>
@@ -160,6 +181,9 @@
       Šis HTML fails saturē pārveidotu tekstu un ir stilizēts ar iebūvētu CSS. Varat saglabāt šo kā <code>romeo_and_juliet.html</code> un atvērt pārlūkā.
     </footer>
   </div>
+
+  <!-- Back to Top button -->
+  <button id="backToTop">↑ Atpakaļ uz sākumu</button>
 
   <script>
     // build a small TOC from acts
