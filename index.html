@@ -1,1 +1,75 @@
+<!doctype html>
+<html lang="lv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Romeo and Juliet — formatted</title>
+<style>
+:root{
+--bg:#faf8f6; --card:#ffffff; --muted:#666; --accent:#6b2a2a; --serif:'Georgia', 'Times New Roman', serif;
+}
+html,body{height:100%;}
+body{
+margin:0; padding:32px; background:linear-gradient(180deg,#fff 0%,var(--bg) 100%);
+font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+color:#222; line-height:1.55; -webkit-font-smoothing:antialiased;
+}
+.container{max-width:960px; margin:0 auto}
+header{display:flex;align-items:center;gap:16px;margin-bottom:24px}
+header h1{font-family:var(--serif);margin:0;font-size:28px;color:var(--accent)}
+header p{margin:0;color:var(--muted)}
+.controls{margin-left:auto;display:flex;gap:8px}
+.search{padding:8px 12px;border-radius:10px;border:1px solid #e6e2de;width:220px}
+nav{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+nav button{background:transparent;border:none;padding:6px 12px;border-radius:10px;cursor:pointer}
+nav button.active{background:var(--accent);color:#fff}
+main{display:block}
+section.act{background:var(--card);border-radius:12px;padding:18px;margin-bottom:18px;box-shadow:0 6px 18px rgba(50,40,40,0.06)}
+section.act h2{margin:0 0 8px 0;font-family:var(--serif);font-size:20px;color:var(--accent)}
+.scene{margin-bottom:14px}
+.scene h3{margin:6px 0 8px 0;font-size:16px;color:#333}
+.dramatis-personae{font-style:italic;color:var(--muted);margin-bottom:12px}
+.line{margin:0 0 6px 0}
+.speaker{font-weight:700;display:inline-block;width:150px}
+.dialog{display:inline-block;max-width:calc(100% - 160px)}
+.stage-direction{font-style:italic;color:var(--muted);margin:8px 0}
+.dropcap:first-letter{float:left;font-size:56px;line-height:48px;padding-right:8px;font-family:var(--serif);color:var(--accent)}
+footer{margin-top:18px;color:var(--muted);font-size:13px}
+/* responsive */
+@media (max-width:640px){
+.speaker{display:block;width:100%;font-weight:700;margin-top:8px}
+.dialog{display:block}
+.search{width:140px}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<div>
+<h1>Romeo and Juliet</h1>
+<p>William Shakespeare — formatted for web</p>
+</div>
+<div class="controls">
+<input class="search" id="search" placeholder="Meklēt tekstā..." />
+<button id="collapseAll">Sakļaut</button>
+<button id="expandAll">Izvērst</button>
+</div>
+</header>
 
+
+<nav id="toc"></nav>
+
+
+<main id="play">
+<!-- The full play text has been converted into semantic HTML below. -->
+
+
+<!-- PROLOGUE -->
+<section class="act" data-act="Prologue">
+<h2>PROLOGUE</h2>
+<article class="scene">
+<p class="dropcap">Two households, both alike in dignity,<br>
+In fair Verona, where we lay our scene,<br>
+From ancient grudge break to new mutiny,<br>
+Where civil blood makes civil hands unclean.<br>
