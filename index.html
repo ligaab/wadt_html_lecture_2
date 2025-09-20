@@ -210,6 +210,16 @@
       document.getElementById('expandAll').addEventListener('click',()=>{
         document.querySelectorAll('section.act article.scene .line, section.act article.scene .dropcap').forEach(el=>el.style.display='');
       });
+
+      // back-to-top button
+      const backToTop = document.getElementById('backToTop');
+      window.addEventListener('scroll', () => {
+        backToTop.style.display = (window.scrollY > 100) ? 'block' : 'none';
+      });
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
     })();
   </script>
 </body>
