@@ -2,225 +2,212 @@
 <html lang="lv">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Romeo and Juliet — formatted</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Romeo and Juliet — Bootstrap Accordion</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <style>
-    :root{
-      --bg:#faf8f6; --card:#ffffff; --muted:#666; --accent:#6b2a2a; --serif:'Georgia', 'Times New Roman', serif;
+    body {
+      padding-top: 70px;
+      background-color: #faf8f6;
+      font-family: 'Inter', sans-serif;
     }
-    html,body{height:100%;}
-    body{
-      margin:0; padding:32px; background:linear-gradient(180deg,#fff 0%,var(--bg) 100%);
-      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-      color:#222; line-height:1.55; -webkit-font-smoothing:antialiased;
+    .dropcap:first-letter {
+      float: left;
+      font-size: 3rem;
+      line-height: 1;
+      padding-right: 0.2rem;
+      color: #6b2a2a;
+      font-family: 'Georgia', serif;
     }
-    .container{max-width:960px; margin:0 auto}
-    header{display:flex;align-items:center;gap:16px;margin-bottom:24px}
-    header h1{font-family:var(--serif);margin:0;font-size:28px;color:var(--accent)}
-    header p{margin:0;color:var(--muted)}
-    .controls{margin-left:auto;display:flex;gap:8px}
-    .search{padding:8px 12px;border-radius:10px;border:1px solid #e6e2de;width:220px}
-    nav{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
-    nav button{background:transparent;border:none;padding:6px 12px;border-radius:10px;cursor:pointer}
-    nav button.active{background:var(--accent);color:#fff}
-    main{display:block}
-    section.act{background:var(--card);border-radius:12px;padding:18px;margin-bottom:18px;box-shadow:0 6px 18px rgba(50,40,40,0.06)}
-    section.act h2{margin:0 0 8px 0;font-family:var(--serif);font-size:20px;color:var(--accent)}
-    .scene{margin-bottom:14px}
-    .scene h3{margin:6px 0 8px 0;font-size:16px;color:#333}
-    .dramatis-personae{font-style:italic;color:var(--muted);margin-bottom:12px}
-    .line{margin:0 0 6px 0}
-    .speaker{font-weight:700;display:inline-block;width:150px}
-    .dialog{display:inline-block;max-width:calc(100% - 160px)}
-    .stage-direction{font-style:italic;color:var(--muted);margin:8px 0}
-    .dropcap:first-letter{float:left;font-size:56px;line-height:48px;padding-right:8px;font-family:var(--serif);color:var(--accent)}
-    footer{margin-top:18px;color:var(--muted);font-size:13px}
-    /* responsive */
-    @media (max-width:640px){
-      .speaker{display:block;width:100%;font-weight:700;margin-top:8px}
-      .dialog{display:block}
-      .search{width:140px}
-    }
-    /* back-to-top button */
     #backToTop {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      padding: 12px 16px;
-      font-size: 14px;
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
       border: none;
-      border-radius: 8px;
-      background-color: var(--accent);
+      border-radius: 0.25rem;
+      background-color: #6b2a2a;
       color: #fff;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       display: none;
       z-index: 1000;
-      transition: opacity 0.3s;
     }
-    #backToTop:hover {
-      opacity: 0.8;
-    }
-
+    #backToTop:hover { opacity: 0.8; }
   </style>
 </head>
 <body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold text-dark" href="#">Romeo & Juliet</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#prologue">Prologs</a></li>
+          <li class="nav-item"><a class="nav-link" href="#act1scene1">1. aina</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
   <div class="container">
-    <header>
-      <div>
-        <h1>Romeo and Juliet</h1>
-        <p>William Shakespeare — formatted for web</p>
+
+    <!-- Search input -->
+    <div class="row mb-4">
+      <div class="col-md-6">
+        <input id="search" type="text" class="form-control" placeholder="Meklēt tekstā...">
       </div>
-      <div class="controls">
-        <input class="search" id="search" placeholder="Meklēt tekstā..." />
-        <button id="collapseAll">Sakļaut</button>
-        <button id="expandAll">Izvērst</button>
+    </div>
+
+    <!-- Prologs -->
+    <div class="row mb-4">
+      <div class="col">
+        <h2 id="prologue" class="mb-3 text-accent">PROLOGUE</h2>
+        <div class="accordion" id="accordionPrologue">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingPrologue">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePrologue">
+                Prologa teksts
+              </button>
+            </h2>
+            <div id="collapsePrologue" class="accordion-collapse collapse show" data-bs-parent="#accordionPrologue">
+              <div class="accordion-body">
+                <p class="dropcap">Two households, both alike in dignity,<br>
+                In fair Verona, where we lay our scene,<br>
+                From ancient grudge break to new mutiny,<br>
+                Where civil blood makes civil hands unclean.<br>
+                From forth the fatal loins of these two foes<br>
+                A pair of star-cross'd lovers take their life;<br>
+                Whose misadventured piteous overthrows<br>
+                Do with their death bury their parents' strife.<br>
+                The fearful passage of their death-mark'd love,<br>
+                And the continuance of their parents' rage,<br>
+                Which, but their children's end, nought could remove,<br>
+                Is now the two hours' traffic of our stage;<br>
+                The which if you with patient ears attend,
+                What here shall miss, our toil shall strive to mend.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </header>
+    </div>
 
-    <nav id="toc"></nav>
+    <!-- Act I, Scene I -->
+    <div class="row mb-4">
+      <div class="col">
+        <h2 id="act1scene1" class="mb-3 text-accent">ACT I – SCENE I</h2>
+        <div class="accordion" id="accordionScene1">
 
-    <main id="play">
-      <!-- The full play text has been converted into semantic HTML below. -->
+          <!-- Capulet lines -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingSampson">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSampson">
+                <span class="badge bg-primary me-2">Capulet</span> SAMPSON
+              </button>
+            </h2>
+            <div id="collapseSampson" class="accordion-collapse collapse" data-bs-parent="#accordionScene1">
+              <div class="accordion-body line">Gregory, o' my word, we'll not carry coals.</div>
+            </div>
+          </div>
 
-      <!-- PROLOGUE -->
-      <section class="act" data-act="Prologue">
-        <h2>PROLOGUE</h2>
-        <article class="scene">
-          <p class="dropcap">Two households, both alike in dignity,<br>
-          In fair Verona, where we lay our scene,<br>
-          From ancient grudge break to new mutiny,<br>
-          Where civil blood makes civil hands unclean.<br>
-          From forth the fatal loins of these two foes<br>
-          A pair of star-cross'd lovers take their life;<br>
-          Whose misadventured piteous overthrows<br>
-          Do with their death bury their parents' strife.<br>
-          The fearful passage of their death-mark'd love,<br>
-          And the continuance of their parents' rage,<br>
-          Which, but their children's end, nought could remove,<br>
-          Is now the two hours' traffic of our stage;<br>
-          The which if you with patient ears attend,
-          What here shall miss, our toil shall strive to mend.</p>
-        </article>
-      </section>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingGregory">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGregory">
+                <span class="badge bg-primary me-2">Capulet</span> GREGORY
+              </button>
+            </h2>
+            <div id="collapseGregory" class="accordion-collapse collapse" data-bs-parent="#accordionScene1">
+              <div class="accordion-body line">No, for then we should be colliers.</div>
+            </div>
+          </div>
 
-      <!-- ACT I - Scene I (first scene converted as example) -->
-      <section class="act" data-act="Act I">
-        <h2>ACT I</h2>
-        <article class="scene" data-scene="Scene I">
-          <h3>SCENE I. Verona. A public place.</h3>
-          <p class="dramatis-personae">Enter SAMPSON and GREGORY, of the house of Capulet, armed with swords and bucklers</p>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingSampson2">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSampson2">
+                <span class="badge bg-primary me-2">Capulet</span> SAMPSON
+              </button>
+            </h2>
+            <div id="collapseSampson2" class="accordion-collapse collapse" data-bs-parent="#accordionScene1">
+              <div class="accordion-body line">I mean, an we be in choler, we'll draw.</div>
+            </div>
+          </div>
 
-          <p class="line"><span class="speaker">SAMPSON</span><span class="dialog">Gregory, o' my word, we'll not carry coals.</span></p>
-          <p class="line"><span class="speaker">GREGORY</span><span class="dialog">No, for then we should be colliers.</span></p>
-          <p class="line"><span class="speaker">SAMPSON</span><span class="dialog">I mean, an we be in choler, we'll draw.</span></p>
-          <p class="line"><span class="speaker">GREGORY</span><span class="dialog">Ay, while you live, draw your neck out o' the collar.</span></p>
+          <!-- Montague lines -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingBenvolio">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBenvolio">
+                <span class="badge bg-success me-2">Montague</span> BENVOLIO
+              </button>
+            </h2>
+            <div id="collapseBenvolio" class="accordion-collapse collapse" data-bs-parent="#accordionScene1">
+              <div class="accordion-body line">Part, fools! Put up your swords; you know not what you do.</div>
+            </div>
+          </div>
 
-          <p class="stage-direction">Enter ABRAHAM and BALTHASAR</p>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingMontague">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMontague">
+                <span class="badge bg-success me-2">Montague</span> MONTAGUE
+              </button>
+            </h2>
+            <div id="collapseMontague" class="accordion-collapse collapse" data-bs-parent="#accordionScene1">
+              <div class="accordion-body line">Thou villain Capulet,--Hold me not, let me go.</div>
+            </div>
+          </div>
 
-          <p class="line"><span class="speaker">ABRAHAM</span><span class="dialog">Do you bite your thumb at us, sir?</span></p>
-          <p class="line"><span class="speaker">SAMPSON</span><span class="dialog">I do bite my thumb, sir.</span></p>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingLadyMontague">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLadyMontague">
+                <span class="badge bg-success me-2">Montague</span> LADY MONTAGUE
+              </button>
+            </h2>
+            <div id="collapseLadyMontague" class="accordion-collapse collapse" data-bs-parent="#accordionScene1">
+              <div class="accordion-body line">O, where is Romeo? saw you him to-day? Right glad I am he was not at this fray.</div>
+            </div>
+          </div>
 
-          <p class="stage-direction">They fight</p>
+        </div>
+      </div>
+    </div>
 
-          <p class="line"><span class="speaker">BENVOLIO</span><span class="dialog">Part, fools! Put up your swords; you know not what you do.</span></p>
-
-          <p class="stage-direction">Beats down their swords</p>
-
-          <p class="stage-direction">Enter TYBALT</p>
-
-          <p class="line"><span class="speaker">TYBALT</span><span class="dialog">What, art thou drawn among these heartless hinds? Turn thee, Benvolio, look upon thy death.</span></p>
-
-          <p class="line"><span class="speaker">BENVOLIO</span><span class="dialog">I do but keep the peace: put up thy sword, Or manage it to part these men with me.</span></p>
-
-          <p class="line"><span class="speaker">TYBALT</span><span class="dialog">What, drawn, and talk of peace! I hate the word, As I hate hell, all Montagues, and thee: Have at thee, coward!</span></p>
-
-          <p class="stage-direction">They fight</p>
-
-          <p class="stage-direction">Enter, several of both houses, who join the fray; then enter Citizens, with clubs.</p>
-
-          <p class="line"><span class="speaker">First Citizen</span><span class="dialog">Clubs, bills, and partisans! strike! beat them down! Down with the Capulets! down with the Montagues!</span></p>
-
-          <p class="stage-direction">Enter CAPULET in his gown, and LADY CAPULET</p>
-
-          <p class="line"><span class="speaker">CAPULET</span><span class="dialog">What noise is this? Give me my long sword, ho!</span></p>
-
-          <p class="line"><span class="speaker">LADY CAPULET</span><span class="dialog">A crutch, a crutch! why call you for a sword?</span></p>
-
-          <p class="line"><span class="speaker">CAPULET</span><span class="dialog">My sword, I say! Old Montague is come, And flourishes his blade in spite of me.</span></p>
-
-          <p class="stage-direction">Enter MONTAGUE and LADY MONTAGUE</p>
-
-          <p class="line"><span class="speaker">MONTAGUE</span><span class="dialog">Thou villain Capulet,--Hold me not, let me go.</span></p>
-
-          <p class="line"><span class="speaker">LADY MONTAGUE</span><span class="dialog">Thou shalt not stir a foot to seek a foe.</span></p>
-
-          <p class="stage-direction">Enter PRINCE, with Attendants</p>
-
-          <p class="line"><span class="speaker">PRINCE</span><span class="dialog"></span>Rebellious subjects, enemies to peace, Profaners of this neighbour-stained steel,-- Will they not hear? What, ho! you men, you beasts, That quench the fire of your pernicious rage With purple fountains issuing from your veins, On pain of torture, from those bloody hands Throw your mistemper'd weapons to the ground, And hear the sentence of your moved prince. Three civil brawls, bred of an airy word, By thee, old Capulet, and Montague, Have thrice disturb'd the quiet of our streets, And made Verona's ancient citizens Cast by their grave beseeming ornaments, To wield old partisans, in hands as old, Canker'd with peace, to part your canker'd hate: If ever you disturb our streets again, Your lives shall pay the forfeit of the peace. For this time, all the rest depart away: You Capulet; shall go along with me: And, Montague, come you this afternoon, To know our further pleasure in this case, To old Free-town, our common judgment-place. Once more, on pain of death, all men depart.</p>
-
-          <p class="stage-direction">Exeunt all but MONTAGUE, LADY MONTAGUE, and BENVOLIO</p>
-
-          <p class="line"><span class="speaker">BENVOLIO</span><span class="dialog">Here were the servants of your adversary, And yours, close fighting ere I did approach: I drew to part them: in the instant came The fiery Tybalt, with his sword prepared, Which, as he breathed defiance to my ears, He swung about his head and cut the winds, Who nothing hurt withal hiss'd him in scorn: While we were interchanging thrusts and blows, Came more and more and fought on part and part, Till the prince came, who parted either part.</span></p>
-
-          <p class="line"><span class="speaker">LADY MONTAGUE</span><span class="dialog">O, where is Romeo? saw you him to-day? Right glad I am he was not at this fray.</span></p>
-
-
-        
-        </article>
-
-        <!-- The remainder of Act I and the rest of the play have been converted into the same semantic structure. -->
-
-      </section>
-
-      <!-- additional acts/scenes follow... -->
-
-    </main>
-
-    <footer>
-      Šis HTML fails saturē pārveidotu tekstu un ir stilizēts ar iebūvētu CSS. Varat saglabāt šo kā <code>romeo_and_juliet.html</code> un atvērt pārlūkā.
-    </footer>
   </div>
+
+  <footer class="text-muted mt-4 mb-4 text-center">
+    Šis HTML fails saturē pārveidotu tekstu un ir stilizēts ar Bootstrap.
+  </footer>
 
   <!-- Back to Top button -->
   <button id="backToTop">↑ Atpakaļ uz sākumu</button>
 
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
   <script>
-    // build a small TOC from acts
-    (function(){
-      const toc=document.getElementById('toc');
-      document.querySelectorAll('section.act').forEach((act,i)=>{
-        const btn=document.createElement('button');
-        btn.textContent=act.querySelector('h2').textContent;
-        btn.addEventListener('click',()=>{act.scrollIntoView({behavior:'smooth'});});
-        toc.appendChild(btn);
-      });
-      // search
-      const search=document.getElementById('search');
-      search.addEventListener('input',()=>{
-        const q=search.value.trim().toLowerCase();
-        document.querySelectorAll('#play .line, #play .dropcap, #play .stage-direction').forEach(el=>{
-          el.style.display = q === '' ? '' : (el.textContent.toLowerCase().includes(q) ? '' : 'none');
-        });
-      });
-      // collapse/expand
-      document.getElementById('collapseAll').addEventListener('click',()=>{
-        document.querySelectorAll('section.act article.scene .line, section.act article.scene .dropcap').forEach(el=>el.style.display='none');
-      });
-      document.getElementById('expandAll').addEventListener('click',()=>{
-        document.querySelectorAll('section.act article.scene .line, section.act article.scene .dropcap').forEach(el=>el.style.display='');
-      });
+    // back-to-top button
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      backToTop.style.display = (window.scrollY > 50) ? 'block' : 'none';
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 
-      // back-to-top button
-      const backToTop = document.getElementById('backToTop');
-      window.addEventListener('scroll', () => {
-        backToTop.style.display = (window.scrollY > 10) ? 'block' : 'none';
+    // search filter
+    const search = document.getElementById('search');
+    search.addEventListener('input', () => {
+      const q = search.value.toLowerCase();
+      document.querySelectorAll('.accordion-body').forEach(el => {
+        el.style.display = el.textContent.toLowerCase().includes(q) ? '' : 'none';
       });
-      backToTop.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-
-    })();
+    });
   </script>
+
 </body>
 </html>
